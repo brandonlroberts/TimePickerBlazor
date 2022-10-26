@@ -1,0 +1,26 @@
+﻿@page "/"
+@using TimePicker.Models;
+<div class="time-picker-body">
+    <div class="flex-container">
+        <div class="time-item"><MudTextField @bind-Value="hour" Label="Hour" Variant="Variant.Outlined"></MudTextField></div>
+        <div class="time-item"><MudTextField @bind-Value="minute" Label="Minute" Variant="Variant.Outlined"></MudTextField></div>
+        <div class="time-item">
+            <MudSelect T="AmPm" Label="AM/PM" Variant="Variant.Outlined" AnchorOrigin="Origin.BottomCenter">
+                <MudSelectItem Value="@(new AmPm("AM"))" />
+                <MudSelectItem Value="@(new AmPm("PM"))" />
+            </MudSelect>
+        </div>
+    </div>
+</div>
+
+
+<MudTextField T="string" Label="Time" InputType="InputType.Time" />
+
+
+@code {
+    TimeSpan? time = new TimeSpan(00, 45, 00);
+    TimeSpan? _time = new DateTime().TimeOfDay;
+    string hour = string.Empty;
+    string minute = string.Empty;
+
+}
