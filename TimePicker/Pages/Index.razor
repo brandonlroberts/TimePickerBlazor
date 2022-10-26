@@ -4,11 +4,16 @@
 <MudButton OnClick="ProcessSomething" Variant="Variant.Filled" Color="Color.Primary">Snooze</MudButton>
 @code {
     private DateTime _dateTime = new DateTime();
-    private DateTime? _currentDateTime = DateTime.Now;
+    private DateTime? _currentDateTime;
 
+    protected override void OnInitialized()
+    {
+        _currentDateTime = DateTime.Now;
+    }
+    
     private void ProcessSomething()
     {
-        _currentDateTime = DateTime.Now.AddMinutes(10);
+        _currentDateTime = _currentDateTime?.AddMinutes(10);
     }
 
 }
